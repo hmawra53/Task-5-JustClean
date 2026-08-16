@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JustClean - Booking Cart</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="logo">JustClean</div>
+    <nav><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Book Service</a></li>
+        <li><a href="submissions.html">Submissions</a></li>
+        <li><a href="task-manager.html">Task Manager</a></li>
+    </ul></nav>
+    <a href="contact.html"><button>Back to Booking</button></a>
+</header>
+
+<section class="booking-page">
+    <div class="booking-heading">
+        <h1>Your Booking Cart</h1>
+        <p>Review your selected cleaning services before confirming.</p>
+    </div>
+    <div id="fullCart" class="booking-cart" style="max-width:850px;margin:auto;position:static;"></div>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-box">
+            <h2>JustClean</h2>
+            <p>Your trusted partner for reliable home cleaning and maid booking services.</p>
+        </div>
+    </div>
+    <hr>
+    <div class="copyright"><p>© 2025 JustClean | Privacy Policy | Terms & Conditions</p></div>
+</footer>
+
+<script src="booking.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const box = document.getElementById("fullCart");
+    const services = window.__justCleanServices || [];
+    let cart = JSON.parse(localStorage.getItem("justCleanCart")) || [];
+
+    function render() {
+        if (!cart.length) {
+            box.innerHTML = '<div class="empty-cart"><i class="fa-solid fa-cart-shopping"></i><h2>Your cart is empty</h2><p><a href="contact.html">Browse services</a></p></div>';
+            return;
+        }
+
+        let total = 0, count = 0;
+        let html = '<div class="cart-header"><h2>Selected Services</h2><a href="contact.html">Add More</a></div>';
+
+        cart.forEach(item => {
+            const service = services.find(s => s.id === item.id);
+            if (!service) return;
+            total += service.price * item.qty;
+            count += item.qty;
+
+            html += `<div class="cart-item">
+                <div class="cart-item-info">
+                    <strong>${service.name}</strong>
+                    <span>₹${service.price} × ${item.qty}</span>
+                </div>
+                <div class="quantity-controls">
+                    <button onclick="changeQty(${service.id},-1)">−</button>
+                    <span>${item.qty}</span>
+                    <button onclick="changeQty(${service.id},1)">+</button>
+                </div>
+                <button class="remove-item" onclick="removeCart(${service.id})">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </div>`;
+        });
+
+        html += `<div class="cart-summary">
+            <div><span>Items</span><strong>${count}</strong></div>
+            <div class="cart-total"><span>Total</span><strong>₹${total.toLocaleString("en-IN")}</strong></div>
+            <button class="confirm-booking" onclick="confirmFullBooking()">Confirm Booking</button>
+        </div>`;
+
+        box.innerHTML = html;
+    }
+
+    window.changeQty = (id, amount) => {
+        const item = cart.find(x => x.id === id);
+        if (!item) return;
+        item.qty += amount;
+        if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
+        localStorage.setItem("justCleanCart", JSON.stringify(cart));
+        render();
+    };
+
+    window.removeCart = id => {
+        cart = cart.filter(x => x.id !== id);
+        localStorage.setItem("justCleanCart", JSON.stringify(cart));
+        render();
+    };
+
+    window.confirmFullBooking = () => {
+        if (!cart.length) return;
+
+        const bookings = JSON.parse(localStorage.getItem("justCleanBookings")) || [];
+        const id = "JC" + Date.now();
+
+        bookings.push({
+            id,
+            items: cart.map(item => ({...item})),
+            date: new Date().toLocaleString()
+        });
+
+        localStorage.setItem("justCleanBookings", JSON.stringify(bookings));
+        localStorage.removeItem("justCleanCart");
+
+        alert("Booking confirmed! Your booking ID is " + id);
+        cart = [];
+        render();
+    };
+
+    render();
+});
+</script>
+</body>
+</html>

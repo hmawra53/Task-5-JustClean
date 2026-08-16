@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustClean - Book a Service</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="logo">JustClean</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="dropdown">
+                Services
+                <ul class="dropdown-menu">
+                    <li>Regular Cleaning</li>
+                    <li>Deep Cleaning</li>
+                    <li>Kitchen Cleaning</li>
+                    <li>Bathroom Cleaning</li>
+                </ul>
+            </li>
+            <li><a href="contact.html">Book Service</a></li>
+            <li><a href="submissions.html">Submissions</a></li>
+            <li><a href="task-manager.html">Task Manager</a></li>
+        </ul>
+    </nav>
+    <a href="#cart"><button><i class="fa-solid fa-cart-shopping"></i> Cart <span id="cartCount">0</span></button></a>
+</header>
+
+<section class="booking-page">
+    <div class="booking-heading">
+        <h1>Book a Cleaning Service</h1>
+        <p>Choose a service, search and filter your options, then add your selected services to the booking cart.</p>
+    </div>
+
+    <div class="catalog-controls">
+        <div class="catalog-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="serviceSearch" type="search" placeholder="Search cleaning services...">
+        </div>
+
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="Home Cleaning">Home Cleaning</option>
+            <option value="Kitchen">Kitchen</option>
+            <option value="Bathroom">Bathroom</option>
+            <option value="Specialized">Specialized</option>
+        </select>
+
+        <select id="sortServices">
+            <option value="default">Sort By</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="name-asc">Name: A to Z</option>
+            <option value="name-desc">Name: Z to A</option>
+        </select>
+    </div>
+
+    <div class="booking-layout">
+        <div class="catalog-area">
+            <div class="catalog-topline">
+                <h2>Available Services</h2>
+                <span id="resultCount"></span>
+            </div>
+            <div id="serviceGrid" class="service-grid"></div>
+            <p id="noServices" class="no-services">No services match your search.</p>
+            <div id="pagination" class="pagination"></div>
+        </div>
+
+        <aside id="cart" class="booking-cart">
+            <div class="cart-header">
+                <h2><i class="fa-solid fa-basket-shopping"></i> Booking Cart</h2>
+                <button id="clearCartBtn" class="clear-cart">Clear</button>
+            </div>
+            <div id="cartItems"></div>
+            <div id="emptyCart" class="empty-cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <p>Your booking cart is empty.</p>
+            </div>
+            <div class="cart-summary">
+                <div><span>Items</span><strong id="cartItemsTotal">0</strong></div>
+                <div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+                <button id="confirmBookingBtn" class="confirm-booking">Confirm Booking</button>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<div id="serviceModal" class="service-modal">
+    <div class="service-modal-content">
+        <button id="closeModal" class="close-modal">&times;</button>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-box">
+            <h2>JustClean</h2>
+            <p>Your trusted partner for reliable home cleaning and maid booking services.</p>
+        </div>
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="contact.html">Book Service</a></li>
+                <li><a href="submissions.html">Submissions</a></li>
+                <li><a href="task-manager.html">Task Manager</a></li>
+            </ul>
+        </div>
+        <div class="footer-box">
+            <h3>Services</h3>
+            <ul>
+                <li>Regular Cleaning</li>
+                <li>Deep Cleaning</li>
+                <li>Kitchen Cleaning</li>
+                <li>Bathroom Cleaning</li>
+            </ul>
+        </div>
+        <div class="footer-box">
+            <h3>Contact Us</h3>
+            <p>Email: support@justclean.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <p>Indore, Madhya Pradesh</p>
+        </div>
+    </div>
+    <hr>
+    <div class="copyright">
+        <p>© 2025 JustClean | Privacy Policy | Terms & Conditions</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="booking.js"></script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustClean - Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+            JustClean
+        </div>
+
+        <nav>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+
+                <li class="dropdown">
+                    Services
+
+                    <ul class="dropdown-menu">
+                        <li>Regular Cleaning</li>
+                        <li>Deep Cleaning</li>
+                        <li>Kitchen Cleaning</li>
+                        <li>Bathroom Cleaning</li>
+                    </ul>
+
+                </li>
+
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="submissions.html">Submissions</a></li>
+                <li><a href="task-manager.html">Task Manager</a></li>
+            </ul>
+
+        </nav>
+
+        <a href="index.html">
+            <button>Home</button>
+        </a>
+
+    </header>
+
+
+    <section class="hero task-dashboard">
+
+        <div class="left">
+
+            <h1>
+                Task Manager
+            </h1>
+
+            <p>
+                Organize your tasks, track your progress
+                and stay productive.
+            </p>
+
+            <div class="task-input">
+
+                <input type="text"
+                       id="taskInput"
+                       placeholder="Enter a new task...">
+
+                <button id="addTaskBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Task
+                </button>
+
+            </div>
+
+            <div class="task-search">
+
+                <i class="fa-solid fa-search"></i>
+
+                <input type="text"
+                       id="searchInput"
+                       placeholder="Search tasks...">
+
+            </div>
+
+            <select id="filterTasks">
+
+                <option value="all">All Tasks</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="right task-container">
+
+            <div class="task-header">
+
+                <h2>
+                    My Tasks
+                </h2>
+
+                <span id="taskCount">
+                    0 Tasks
+                </span>
+
+            </div>
+
+            <ul id="taskList">
+            </ul>
+
+            <p id="noTasks">
+                No tasks available.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="features">
+
+        <div class="card">
+
+            <i class="fa-solid fa-list-check"></i>
+
+            <h2 id="totalTasks">
+                0
+            </h2>
+
+            <p>
+                Total Tasks
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h2 id="pendingTasks">
+                0
+            </h2>
+
+            <p>
+                Pending Tasks
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h2 id="completedTasks">
+                0
+            </h2>
+
+            <p>
+                Completed Tasks
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-box">
+
+                <h2>
+                    JustClean
+                </h2>
+
+                <p>
+                    Your trusted partner for reliable home cleaning
+                    and maid booking services.
+                </p>
+
+            </div>
+
+
+            <div class="footer-box">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="submissions.html">Submissions</a></li>
+                    <li><a href="task-manager.html">Task Manager</a></li>
+                </ul>
+
+            </div>
+
+
+            <div class="footer-box">
+
+                <h3>
+                    Task Features
+                </h3>
+
+                <ul>
+                    <li>Add Tasks</li>
+                    <li>Edit Tasks</li>
+                    <li>Delete Tasks</li>
+                    <li>Search Tasks</li>
+                </ul>
+
+            </div>
+
+
+            <div class="footer-box">
+
+                <h3>
+                    Task Status
+                </h3>
+
+                <p>
+                    Total:
+                    <span id="footerTotal">0</span>
+                </p>
+
+                <p>
+                    Completed:
+                    <span id="footerCompleted">0</span>
+                </p>
+
+                <p>
+                    Pending:
+                    <span id="footerPending">0</span>
+                </p>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="copyright">
+
+            <p>
+                © 2025 JustClean | Privacy Policy | Terms & Conditions
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

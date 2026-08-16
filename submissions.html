@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submissions</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+</head>
+<body>
+    <header>
+        <div class="logo">
+            JustClean
+        </div>
+
+        <nav>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    Services
+                    <ul class="dropdown-menu">
+
+                        <li>Regular Cleaning</li>
+                        <li>Deep Cleaning</li>
+                        <li>Kitchen Cleaning</li>
+                        <li>Bathroom Cleaning</li>
+
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="submissions.html">Submissions</a></li>
+                <li><a href="task-manager.html">Task Manager</a></li>
+            </ul>
+        </nav>
+
+        <a href="contact.html">
+             <button>Book Now</button>
+        </a>
+
+    </header>
+
+    <section class="submissions">
+        <h1>Customer Submissions</h1>
+        <div id="submissionList"></div>
+    </section>
+
+    <script>
+        let contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+        let list = document.getElementById("submissionList");
+
+        if(contacts.length==0){
+            list.innerHTML="<h2>No Submissions Yet</h2>";
+        }
+        else{
+            contacts.forEach(function(contact){
+                list.innerHTML += `
+
+                <div class="submissions-card">
+
+                    <h2>${contact.name}</h2>
+                    <p><strong>Email:</strong> ${contact.email}</p>
+                    <p><strong>Message:</strong> ${contact.message}</p>
+
+                    </div>
+                    `;
+            });
+        }
+    </script>
+
+    <footer>
+
+<div class="footer-container">
+
+    <div class="footer-box">
+
+        <h2>JustClean</h2>
+
+        <p>
+            Your trusted partner for reliable home cleaning
+            and maid booking services.
+        </p>
+    </div>
+
+    <div class="footer-box">
+
+        <h3>Quick Links</h3>
+        
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="submissions.html">Submissions</a></li>
+            <li><a href="task-manager.html">Task Manager</a></li>
+
+        </ul>
+    </div>
+
+    <div class="footer-box">
+
+        <h3>Services</h3>
+
+        <ul>
+            <li>Regular Cleaning</li>
+            <li>Deep Cleaning</li>
+            <li>Kitchen Cleaning</li>
+            <li>Bathroom Cleaning</li>
+        </ul>
+    </div>
+
+    <div class="footer-box">
+
+        <h3>Contact Us</h3>
+
+        <p>Email: support@justclean.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Indore, Madhya Pradesh</p>
+    </div>
+</div>
+
+<hr>
+
+<div class="copyright">
+    <p>© 2025 JustClean | Privacy Policy | Terms & Conditions</p>
+</div>
+
+    </footer>  
+</body>
+</html>
